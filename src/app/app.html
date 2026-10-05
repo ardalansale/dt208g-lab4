@@ -1,1 +1,38 @@
-<h1>Ramschema – Webbutveckling</h1>
+<div class="container">
+  <h1>Ramschema – Webbutveckling</h1>
+
+  <div class="search-container">
+    <label for="filter">Sök kurs (kod eller namn): </label>
+    <input 
+      type="text" 
+      id="filter" 
+      [(ngModel)]="filterText" 
+      (input)="applyFilter()" 
+      placeholder="Sök på kurskod eller kursnamn..." 
+    />
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Kurskod</th>
+        <th>Kursnamn</th>
+        <th>Progression</th>
+        <th>Kursplan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of filteredCourses">
+        <td>{{ course.code | uppercase }}</td>
+        <td>{{ course.coursename }}</td>
+        <td>{{ course.progression }}</td>
+        <td>
+          <a [href]="course.syllabus" target="_blank" rel="noopener">Visa kursplan</a>
+        </td>
+      </tr>
+      <tr *ngIf="filteredCourses.length === 0">
+        <td colspan="4">Inga kurser hittades...</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

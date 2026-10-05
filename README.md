@@ -1,36 +1,35 @@
-# DT208G – Laboration 3 – Angular Single Page Application
-En Single Page Application (SPA) byggd med Angular där användaren kan konvertera olika måttenheter och temperaturer.
+# DT208G – Laboration 4 – Angular II (Ramschema)
+En Single Page Application (SPA) byggd med Angular där användaren kan söka och sortera bland kurser i ett ramschema som hämtas dynamiskt via ett externt REST-API.
 
 ## Publicerad webbplats
-https://dt208g-lab3.netlify.app/
+https://dt208g-lab4.netlify.app/
 
-## GitHub‑repo
-https://github.com/ardalansale/dt208g-lab3
+## GitHub-repo
+https://github.com/ardalansale/dt208g-lab4
 
 ## Funktionalitet
-- Navigering utan felsidesladdning (Routing / SPA)
-- Konvertera meter till feet (händelsehantering)
-- Konvertera Celsius till Fahrenheit (händelsehantering)
-- Återanvändbar underkomponent för information (`app-info-box`)
-- Responsiv och minimalistisk design
+- Hämtar kursdata dynamiskt från externt JSON-API (`HttpClient`).
+- Realtidssökning och filtrering på kurskod och kursnamn (`ngModel`).
+- Sortering av kurser i stigande och fallande ordning (kurskod, kursnamn och progression).
+- Länkar till officiella kursplaner.
+- Responsiv och stilren design anpassad med enhetlig CSS-bas och `DM Sans`-typsnitt.
 
-## Sidor och komponenter
-- Start (`src/app/start/`) – landningssida med information och InfoBox-komponenten
-- Konvertera (`src/app/konvertera/`) – formulär för måttenhets- och temperaturkonvertering
-- Om (`src/app/om/`) – information om webbplatsen och uppgiften
-- InfoBox (`src/app/info-box/`) – fristående komponent som importeras i Startsidan
+## Komponenter och struktur
+- `AppComponent` (`src/app/app.ts`) – Huvudkomponent som hanterar sökning, sortering och visning.
+- `CourseService` (`src/app/services/course.service.ts`) – Hanterar API-anrop och datahämtning.
+- `Course` (`src/app/models/course.interface.ts`) – TypeScript-gränssnitt för kursdata.
 
 ## Tekniker
 - HTML
-- CSS
+- CSS (Global stilmall med `DM Sans` + komponentanpassad CSS)
 - TypeScript
-- Angular (Standalone Components, Routing)
+- Angular 17+ (Standalone Components, Control Flow `@if` / `@for`, HttpClient, FormsModule)
 
 ## Installation och körning
 1. Klona repot:
-   git clone [DIN_GITHUB_URL]
+   git clone https://github.com/ardalansale/dt208g-lab4.git
 2. Installera beroenden:
    npm install
 3. Starta utvecklingsservern:
-   ng serve
+   npm start
 4. Öppna webbläsaren på `http://localhost:4200/`.

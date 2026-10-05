@@ -1,4 +1,4 @@
-<div class="container">
+<main class="container">
   <h1>Ramschema – Webbutveckling</h1>
 
   <div class="search-container">
@@ -15,24 +15,49 @@
   <table>
     <thead>
       <tr>
-        <th>Kurskod</th>
-        <th>Kursnamn</th>
-        <th>Progression</th>
+        <th (click)="sortCourses('code')" class="sortable">
+          Kurskod 
+          @if (sortColumn === 'code') {
+            <span>{{ sortAscending ? '▲' : '▼' }}</span>
+          }
+        </th>
+        <th (click)="sortCourses('coursename')" class="sortable">
+          Kursnamn 
+          @if (sortColumn === 'coursename') {
+            <span>{{ sortAscending ? '▲' : '▼' }}</span>
+          }
+        </th>
+        <th (click)="sortCourses('progression')" class="sortable">
+          Progression 
+          @if (sortColumn === 'progression') {
+            <span>{{ sortAscending ? '▲' : '▼' }}</span>
+          }
+        </th>
         <th>Kursplan</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let course of filteredCourses">
-        <td>{{ course.code | uppercase }}</td>
-        <td>{{ course.coursename }}</td>
-        <td>{{ course.progression }}</td>
-        <td>
-          <a [href]="course.syllabus" target="_blank" rel="noopener">Visa kursplan</a>
-        </td>
-      </tr>
-      <tr *ngIf="filteredCourses.length === 0">
-        <td colspan="4">Inga kurser hittades...</td>
-      </tr>
+      @for (course of filteredCourses; track course.code) {
+        <tr>
+          <td>{{ course.code | uppercase }}</td>
+          <td>{{ course.coursename }}</td>
+          <td>{{ course.progression }}</td>
+          <td>
+            <a [href]="course.syllabus" target="_blank" rel="noopener">Visa kursplan</a>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="4">Inga kurser hittades...</td>
+        </tr>
+      }
     </tbody>
   </table>
-</div>
+</main>
+
+<footer>
+  <p>DT208G Programmering i TypeScript</p>
+  <p>Laboration 4 - Angular II</p>
+  <p>MIUN VT2026</p>
+  <p>Ardalan Sale</p>
+</footer>

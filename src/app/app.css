@@ -1,0 +1,245 @@
+/* ==========================================
+    1. RESET
+   ========================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+html, body {
+    min-height: 100dvh;
+    scrollbar-gutter: stable;
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeSpeed;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+}
+
+p, li {
+    text-wrap: pretty;
+    max-width: 75ch;
+}
+
+:focus-visible {
+    outline: 2px solid #3752ff;
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ==========================================
+    2. ARDALANS CSS-BAS & LAYOUT
+   ========================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* font-family: 'DM Sans', sans-serif; */
+    background: #f9f9f9;
+    color: #333;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+p {
+    font-size: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+/* Header & Navigering */
+header {
+    margin-bottom: 20px;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+    padding: 10px 0;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a.active {
+    font-weight: bold;
+    /* text-decoration: underline; */
+}
+
+/* Huvudinnehåll */
+main {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Formulär & Inputfält */
+form, .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, textarea, button {
+    padding: 8px;
+    font-family: inherit;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #3752ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 8px;
+    background: #65abff;
+    color: #fff;
+    margin-top: 40px;
+    border-radius: 8px;
+}
+
+footer p {
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Tillgänglighet */
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+/* Componenter - Info Box*/
+.info-box {
+    background-color: #202020;
+    border-left: 4px solid #0066cc;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    border-radius: 4px;
+    color: white;
+}
+
+.info-box h4 {
+    font-weight: 700;
+    margin-top: 0;
+    color: #0066cc;
+}
+
+/* Image Sections */
+.hero-image {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto;
+}
+
+/* ==========================================
+    3. TILLÄGG FÖR TABELL OCH SÖKFÄLT
+   ========================================== */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.search-container label {
+    font-weight: 500;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f0f0f0;
+    font-weight: 700;
+}
+
+th.sortable {
+    cursor: pointer;
+    user-select: none;
+}
+
+th.sortable:hover {
+    background-color: #e5e5e5;
+}
+
+tr:nth-child(even) {
+    background-color: #fbfbfb;
+}
+
+a {
+    color: #3752ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

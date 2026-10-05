@@ -17,6 +17,10 @@ export class AppComponent implements OnInit {
   filteredCourses: Course[] = [];
   filterText: string = '';
 
+  // Sorteringstillstånd
+  sortColumn: keyof Course = 'code';
+  sortAscending: boolean = true;
+
   constructor(private courseService: CourseService) {}
 
   ngOnInit(): void {
@@ -24,6 +28,7 @@ export class AppComponent implements OnInit {
       next: (data) => {
         this.courses = data;
         this.filteredCourses = data;
+        this.sortCourses('code'); // Standardsortera på kurskod
       },
       error: (error) => {
         console.error('Error fetching courses:', error);
@@ -37,5 +42,26 @@ export class AppComponent implements OnInit {
       course.code.toLowerCase().includes(search) ||
       course.coursename.toLowerCase().includes(search)
     );
+    this.sortCourses(this.sortColumn, false); // Behåll sorteringen på det filtrerade resultatet
+  }
+
+  sortCourses(column: keyof Course, toggle: boolean = true): void {
+    if (toggle) {
+      if (this.sortColumn === column) {
+        this.sortAscending = !this.sortAscending;
+      } else {
+        this.sortColumn = column;
+        this.sortAscending = true;
+      }
+    }
+
+    this.filteredCourses.sort((a, b) => {
+      const valA = (a[column] || '').toString().toLowerCase();
+      const valB = (b[column] || '').toString().toLowerCase();
+
+      if (valA < valB) return this.sortAscending ? -1 : 1;
+      if (valA > valB) return this.sortAscending ? 1 : -1;
+      return 0;
+    });
   }
 }
